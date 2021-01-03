@@ -18,7 +18,7 @@ const App = {
   },
   methods: {
     prev() {
-      if(!this.isPrevButtonDisabled && !this.isFinish) {
+      if(!this.isPrevButtonDisabled) {
         this.activeIndex--
       }
     },
@@ -29,7 +29,7 @@ const App = {
     },
     nextOfFinish() {
       // кнопка вперед или закончить
-      if(!this.isLastStep && !this.isFinish) {
+      if(!this.isLastStep) {
         this.activeIndex++
       } else {
         this.isFinish = true
