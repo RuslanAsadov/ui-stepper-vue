@@ -13,7 +13,8 @@
   <div class="container" id="app">
     <div class="card" v-cloak>
 
-      <h1>{{ steps[activeIndex].title }}</h1>
+      <h1>План по изучению Vue.js</h1>
+      <h2>{{ steps[activeIndex].title }}</h2>
 
       <div class="steps">
         <div class="steps-content">
@@ -28,17 +29,23 @@
         </ul>
         <div>
 
-          <button
-            v-if="!isLastStep"
-            class="btn"
-            :disabled="isPrevButtonDisabled"
-            @click="prev"
-          >Назад</button>
-
+          <template v-if="!isFinish">
+            <button
+              class="btn"
+              :disabled="isPrevButtonDisabled"
+              @click="prev"
+            >Назад</button>
+  
+            <button
+              class="btn primary"
+              @click="nextOfFinish"
+            >{{ isLastStep ? 'Закончить' : 'Вперед' }}</button>
+          </template>
           <button
             class="btn primary"
-            @click="nextOfFinish"
-          >{{ isLastStep ? 'Начать заново' : 'Вперед' }}</button>
+            @click="reset"
+            v-else
+          >Начать заново</button>
 
         </div>
       </div>
