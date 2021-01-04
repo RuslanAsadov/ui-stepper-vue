@@ -18,9 +18,7 @@ const App = {
   },
   methods: {
     prev() {
-      if(!this.isPrevButtonDisabled) {
-        this.activeIndex--
-      }
+      this.activeIndex--
     },
     reset() {
       // начать заново
