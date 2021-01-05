@@ -18,7 +18,9 @@ const App = {
   },
   methods: {
     prev() {
-      this.activeIndex--
+      if(!this.isFirstStep) {
+        this.activeIndex--
+      }
     },
     reset() {
       // начать заново
@@ -44,15 +46,15 @@ const App = {
     // тут стоит определить несколько свойств:
     currentStep() {
       // 1. текущий выбранный шаг
-      return this.activeIndex + 1
+      return this.steps[this.activeIndex]
     },
-    isPrevButtonDisabled() {
+    isFirstStep() {
       // 2. выключена ли кнопка назад
       return this.activeIndex === 0
     },
     isLastStep() {
       // 3. находимся ли мы на последнем шаге
-      return this.currentStep === this.steps.length
+      return this.activeIndex + 1 === this.steps.length
     }
   }
 }
